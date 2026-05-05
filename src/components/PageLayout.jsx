@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom";
 import logoSmall from "../assets/logo-small.png";
 
+const LOGO_W = 351;
+const LOGO_H = 118;
+
 export default function PageLayout({ title, subtitle, children }) {
   return (
     <div className="min-h-screen bg-white" style={{ color: "var(--text-main)" }}>
-      {/* Header — pill-style igual à navbar principal */}
+      {/* Header */}
       <header className="sticky top-0 z-40 border-b border-[#d6d6d6] bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center" aria-label="Voltar para Home">
             <img
               src={logoSmall}
               alt="Logo Stock Capital"
-              className="h-16 w-auto"
+              width={LOGO_W}
+              height={LOGO_H}
+              style={{ height: "64px", width: "auto" }}
               loading="eager"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </Link>
 
