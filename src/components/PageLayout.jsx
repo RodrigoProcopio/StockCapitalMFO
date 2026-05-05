@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoSmall from "../assets/logo-small.png";
+import logoSmall from "../assets/logo-small.webp";
 
 const LOGO_W = 351;
 const LOGO_H = 118;

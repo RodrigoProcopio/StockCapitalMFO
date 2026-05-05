@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
-import logoSmall from "../assets/logo-small.png";
+import logoSmall from "../assets/logo-small.webp";
 
 const NAV_LINKS = [
   { id: "home",              label: "Home" },
