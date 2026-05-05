@@ -27,8 +27,8 @@
       manifest-src 'self';
       form-action 'self';
       upgrade-insecure-requests;
-      Cross-Origin-Opener-Policy = "same-origin";
     """
+    Cross-Origin-Opener-Policy = "same-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "geolocation=(), camera=(), microphone=()"
     Referrer-Policy = "strict-origin-when-cross-origin"
