@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── RESET ───────────────────────────────────── */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* ─── TEMA STOCK CAPITAL ──────────────────────── */
+:root {
+  --bg-page:       #ffffff;
+  --bg-subtle:     #f5f5f7;
+  --text-main:     #333846;
+  --text-heading:  #1c2846;
+  --card-bg:       rgba(255,255,255,0.85);
+  --card-border:   #d6d6d6;
+  --brand-navy:    #1c2846;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-page);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-heading);
+  letter-spacing: -0.01em;
+}
+
+/* ─── UTILITÁRIOS GLOBAIS ─────────────────────── */
+
+/* Badge / label uppercase estilo Stock Green */
+.label-upper {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--brand-navy);
+}
+
+/* Pill buttons */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.6rem 1.75rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid var(--card-border);
+}
+
+.btn-pill-primary {
+  background: var(--brand-navy);
+  color: #fff;
+  border-color: var(--brand-navy);
+  box-shadow: 0 0 22px rgba(28,40,70,0.28);
+}
+.btn-pill-primary:hover {
+  background: #263570;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(28,40,70,0.35);
+}
+
+.btn-pill-ghost {
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+.btn-pill-ghost:hover {
+  background: rgba(255,255,255,0.88);
+  color: var(--brand-navy);
+  border-color: var(--brand-navy);
+  transform: translateY(-1px);
+}
+
+/* Glass card */
+.card-glass {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+}
+
+/* ─── ANIMAÇÕES ───────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+
+.anim-fade-up     { animation: fadeInUp 0.7s ease both; }
+.anim-fade-up-d1  { animation: fadeInUp 0.7s ease 0.15s both; }
+.anim-fade-up-d2  { animation: fadeInUp 0.7s ease 0.3s both; }
+.anim-fade-up-d3  { animation: fadeInUp 0.7s ease 0.5s both; }
+
+/* Shimmer no botão principal */
+.shimmer-wrap { position: relative; overflow: hidden; }
+.shimmer-wrap::after {
+  content: "";
+  position: absolute;
+  inset-y: 0; left: -20%; width: 50%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.38), transparent);
+  animation: shimmer 2.6s infinite;
+  pointer-events: none;
+}
+
+/* ─── ACESSIBILIDADE: REDUÇÃO DE MOVIMENTO ───────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .shimmer-wrap::after {
+    display: none;
+  }
+}

@@ -1,0 +1,129 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# ─────────────────────────────────────────────────────────
+# HEADERS SITE-WIDE (global)
+# ─────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = """
+      default-src 'self';
+      base-uri 'self';
+      object-src 'none';
+      frame-ancestors 'none';
+      img-src 'self' data: blob:;
+      font-src 'self' data: https://fonts.gstatic.com;
+      media-src 'self' data: blob:;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      script-src 'self';
+      connect-src 'self' data: blob: https://*.netlify.app https://api.pipefy.com;
+      worker-src 'self' blob:;
+      manifest-src 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    """
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "0"
+
+# ─────────────────────────────────────────────────────────
+# /admin (rota exata) — CSP específica para o CMS
+# ─────────────────────────────────────────────────────────
+[[headers]]
+  for = "/admin"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Content-Security-Policy = """
+      default-src 'self';
+      base-uri 'self';
+      object-src 'none';
+      frame-ancestors 'none';
+      frame-src 'self' https://identity.netlify.com;
+      img-src 'self' data: blob: https://avatars.githubusercontent.com;
+      font-src 'self' data: https://fonts.gstatic.com;
+      media-src 'self' data: blob:;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://identity.netlify.com;
+      connect-src 'self' data: blob: https://identity.netlify.com https://git-gateway.netlify.com https://api.netlify.com https://www.netlifystatus.com;
+      worker-src 'self' blob:;
+      manifest-src 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    """
+
+# ─────────────────────────────────────────────────────────
+# /admin/* — subrotas do CMS
+# ─────────────────────────────────────────────────────────
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Content-Security-Policy = """
+      default-src 'self';
+      base-uri 'self';
+      object-src 'none';
+      frame-ancestors 'none';
+      frame-src 'self' https://identity.netlify.com;
+      img-src 'self' data: blob: https://avatars.githubusercontent.com;
+      font-src 'self' data: https://fonts.gstatic.com;
+      media-src 'self' data: blob:;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://identity.netlify.com;
+      connect-src 'self' data: blob: https://identity.netlify.com https://git-gateway.netlify.com https://api.netlify.com https://www.netlifystatus.com;
+      worker-src 'self' blob:;
+      manifest-src 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    """
+
+# ─────────────────────────────────────────────────────────
+# API -> Functions
+# ─────────────────────────────────────────────────────────
+[[redirects]]
+  from = "/api/form"
+  to   = "/.netlify/functions/send-to-pipefy"
+  status = 200
+
+[[redirects]]
+  from = "/api/send-contact"
+  to   = "/.netlify/functions/send-contact-to-pipefy"
+  status = 200
+  force = true
+
+# ─────────────────────────────────────────────────────────
+# HEADERS para /api/*
+# ─────────────────────────────────────────────────────────
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "0"
+
+# ─────────────────────────────────────────────────────────
+# SPA fallback (por último)
+# ─────────────────────────────────────────────────────────
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# www -> apex
+[[redirects]]
+  from = "https://www.stockcapitalmfo.com.br/*"
+  to   = "https://stockcapitalmfo.com.br/:splat"
+  status = 301
+  force = true

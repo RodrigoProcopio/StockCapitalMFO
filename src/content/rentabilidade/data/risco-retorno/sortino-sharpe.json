@@ -1,0 +1,39 @@
+{
+  "series": [
+    {
+      "date": "2025-01",
+      "sortino": 0,
+      "sharpe": -0.05
+    },
+    {
+      "date": "2025-02",
+      "sortino": 0,
+      "sharpe": 0.14
+    },
+    {
+      "date": "2025-03",
+      "sortino": 0,
+      "sharpe": 0.31
+    },
+    {
+      "date": "2025-04",
+      "sortino": 0,
+      "sharpe": 2.06
+    },
+    {
+      "date": "2025-05",
+      "sortino": 0,
+      "sharpe": 1.39
+    },
+    {
+      "date": "2025-06",
+      "sortino": 0,
+      "sharpe": 0.93
+    },
+    {
+      "date": "2025-07",
+      "sortino": 0,
+      "sharpe": 1.82
+    }
+  ]
+}

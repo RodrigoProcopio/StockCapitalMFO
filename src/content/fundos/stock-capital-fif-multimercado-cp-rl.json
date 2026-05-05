@@ -1,0 +1,471 @@
+{
+  "avisos": {
+    "texto_principal": "As informações aqui apresentadas referem-se exclusivamente ao Fundo de Investimento mencionado e devem ser interpretadas apenas neste contexto, à luz da política de investimento e dos limites por modalidade de ativo financeiro previstos no Regulamento do Fundo. Este material possui caráter estritamente informativo e não constitui, em nenhuma hipótese, recomendação, oferta, solicitação ou convite para compra ou venda de quaisquer ativos no Brasil. O Fundo de Investimento aqui apresentado foi registrado perante a Comissão de Valores Mobiliários (CVM) e, portanto, está disponível para oferta pública no mercado brasileiro.",
+    "observacoes_cliente": "Manter dinâmica de abas. Criar tabela atualizável mensalmente via CMS. Benchmark – CDI. Gráfico de crescimento hipotético similar ao da página principal."
+  },
+  "simbolo": "STOCK",
+  "categoria_label": "RENDA VARIÁVEL",
+  "exposicao": {
+    "itens": [
+      {
+        "setor": "Infraestrutura & Utilities",
+        "percentual": 5.6
+      },
+      {
+        "setor": "Ativos Ambientais",
+        "percentual": 10
+      },
+      {
+        "setor": "Financeiro & Serviços Financeiros",
+        "percentual": 7.5
+      },
+      {
+        "setor": "Materiais, Metais & Mineração",
+        "percentual": 11.5
+      },
+      {
+        "setor": "Energia & Transição Energética",
+        "percentual": 12.8
+      },
+      {
+        "setor": "Tecnologia & Inovação Digital",
+        "percentual": 18
+      },
+      {
+        "setor": "Renda Fixa & Caixa",
+        "percentual": 34.6
+      }
+    ],
+    "observacao": "Preencher via CMS: setor e percentual de exposição do fundo."
+  },
+  "rentabilidade": {
+    "benchmark_label": "CDI",
+    "formato_mes": "MM/AAAA",
+    "tabela_mensal": [
+      {
+        "mes": "02/2021",
+        "fundo": 0.0,
+        "cdi": 0.13
+      },
+      {
+        "mes": "03/2021",
+        "fundo": 4.04,
+        "cdi": 0.2
+      },
+      {
+        "mes": "04/2021",
+        "fundo": 1.01,
+        "cdi": 0.21
+      },
+      {
+        "mes": "05/2021",
+        "fundo": 7.24,
+        "cdi": 0.27
+      },
+      {
+        "mes": "06/2021",
+        "fundo": 0.2,
+        "cdi": 0.31
+      },
+      {
+        "mes": "07/2021",
+        "fundo": 0.22,
+        "cdi": 0.36
+      },
+      {
+        "mes": "08/2021",
+        "fundo": 2.65,
+        "cdi": 0.43
+      },
+      {
+        "mes": "09/2021",
+        "fundo": -4.12,
+        "cdi": 0.44
+      },
+      {
+        "mes": "10/2021",
+        "fundo": -1.67,
+        "cdi": 0.49
+      },
+      {
+        "mes": "11/2021",
+        "fundo": -1.31,
+        "cdi": 0.59
+      },
+      {
+        "mes": "12/2021",
+        "fundo": 6.85,
+        "cdi": 0.77
+      },
+      {
+        "mes": "01/2022",
+        "fundo": -0.45,
+        "cdi": 0.73
+      },
+      {
+        "mes": "02/2022",
+        "fundo": -2.56,
+        "cdi": 0.76
+      },
+      {
+        "mes": "03/2022",
+        "fundo": -4.64,
+        "cdi": 0.93
+      },
+      {
+        "mes": "04/2022",
+        "fundo": -2.75,
+        "cdi": 0.83
+      },
+      {
+        "mes": "05/2022",
+        "fundo": -0.17,
+        "cdi": 1.03
+      },
+      {
+        "mes": "06/2022",
+        "fundo": -0.36,
+        "cdi": 1.02
+      },
+      {
+        "mes": "07/2022",
+        "fundo": 4.66,
+        "cdi": 1.03
+      },
+      {
+        "mes": "08/2022",
+        "fundo": 5.17,
+        "cdi": 1.17
+      },
+      {
+        "mes": "09/2022",
+        "fundo": -5.21,
+        "cdi": 1.07
+      },
+      {
+        "mes": "10/2022",
+        "fundo": 8.66,
+        "cdi": 1.02
+      },
+      {
+        "mes": "11/2022",
+        "fundo": 2.26,
+        "cdi": 1.02
+      },
+      {
+        "mes": "12/2022",
+        "fundo": 3.36,
+        "cdi": 1.12
+      },
+      {
+        "mes": "01/2023",
+        "fundo": 6.55,
+        "cdi": 1.12
+      },
+      {
+        "mes": "02/2023",
+        "fundo": 2.6,
+        "cdi": 0.92
+      },
+      {
+        "mes": "03/2023",
+        "fundo": 2.24,
+        "cdi": 1.17
+      },
+      {
+        "mes": "04/2023",
+        "fundo": 2.44,
+        "cdi": 0.92
+      },
+      {
+        "mes": "05/2023",
+        "fundo": -0.76,
+        "cdi": 1.12
+      },
+      {
+        "mes": "06/2023",
+        "fundo": 5.32,
+        "cdi": 1.07
+      },
+      {
+        "mes": "07/2023",
+        "fundo": 1.89,
+        "cdi": 1.07
+      },
+      {
+        "mes": "08/2023",
+        "fundo": -4.19,
+        "cdi": 1.14
+      },
+      {
+        "mes": "09/2023",
+        "fundo": -1.72,
+        "cdi": 0.97
+      },
+      {
+        "mes": "10/2023",
+        "fundo": -0.84,
+        "cdi": 1.0
+      },
+      {
+        "mes": "11/2023",
+        "fundo": 1.58,
+        "cdi": 0.92
+      },
+      {
+        "mes": "12/2023",
+        "fundo": 2.64,
+        "cdi": 0.9
+      },
+      {
+        "mes": "01/2024",
+        "fundo": 4.03,
+        "cdi": 0.97
+      },
+      {
+        "mes": "02/2024",
+        "fundo": 0.55,
+        "cdi": 0.8
+      },
+      {
+        "mes": "03/2024",
+        "fundo": 3.27,
+        "cdi": 0.83
+      },
+      {
+        "mes": "04/2024",
+        "fundo": -1.58,
+        "cdi": 0.89
+      },
+      {
+        "mes": "05/2024",
+        "fundo": 0.95,
+        "cdi": 0.83
+      },
+      {
+        "mes": "06/2024",
+        "fundo": -3.32,
+        "cdi": 0.79
+      },
+      {
+        "mes": "07/2024",
+        "fundo": 2.41,
+        "cdi": 0.91
+      },
+      {
+        "mes": "08/2024",
+        "fundo": 3.11,
+        "cdi": 0.87
+      },
+      {
+        "mes": "09/2024",
+        "fundo": -2.86,
+        "cdi": 0.84
+      },
+      {
+        "mes": "10/2024",
+        "fundo": -2.35,
+        "cdi": 0.93
+      },
+      {
+        "mes": "11/2024",
+        "fundo": 1.55,
+        "cdi": 0.92
+      },
+      {
+        "mes": "12/2024",
+        "fundo": 3.01,
+        "cdi": 0.87
+      },
+      {
+        "mes": "01/2025",
+        "fundo": -0.22,
+        "cdi": 1.01
+      },
+      {
+        "mes": "02/2025",
+        "fundo": 2.14,
+        "cdi": 0.99
+      },
+      {
+        "mes": "03/2025",
+        "fundo": 1.14,
+        "cdi": 0.96
+      },
+      {
+        "mes": "04/2025",
+        "fundo": -3.74,
+        "cdi": 1.06
+      },
+      {
+        "mes": "05/2025",
+        "fundo": -0.06,
+        "cdi": 1.14
+      },
+      {
+        "mes": "06/2025",
+        "fundo": 0.57,
+        "cdi": 1.1
+      },
+      {
+        "mes": "07/2025",
+        "fundo": 7.61,
+        "cdi": 1.28
+      },
+      {
+        "mes": "08/2025",
+        "fundo": 2.01,
+        "cdi": 1.16
+      },
+      {
+        "mes": "09/2025",
+        "fundo": -5.47,
+        "cdi": 1.22
+      },
+      {
+        "mes": "10/2025",
+        "fundo": 1.33,
+        "cdi": 1.28
+      },
+      {
+        "mes": "11/2025",
+        "fundo": 0.46,
+        "cdi": 1.05
+      },
+      {
+        "mes": "12/2025",
+        "fundo": 1.0,
+        "cdi": 1.22
+      },
+      {
+        "mes": "01/2026",
+        "fundo": 5.52,
+        "cdi": 1.16
+      },
+      {
+        "mes": "02/2026",
+        "fundo": 4.31,
+        "cdi": 1.0
+      }
+    ],
+    "observacao": "Tabela atualizável mensalmente via CMS."
+  },
+  "slug": "fundo-de-investimento",
+  "caracteristicas_portfolio": {
+    "numero_ativos_carteira": 65,
+    "retorno_12m": "0,0%",
+    "volatilidade": "0,0%",
+    "beta": "0,0%",
+    "beta_referencia": "CDI",
+    "sharpe": "0,0%",
+    "maximo_drawdown": "0,0%"
+  },
+  "caracteristicas_chave": {
+    "patrimonio_liquido": "R$ 279.000,00",
+    "bolsa": "B3 S.A. – Brasil, Bolsa, Balcão",
+    "classe_de_ativos": "FIF",
+    "codigo_cvm": "64507423000185",
+    "domicilio": "Brasil",
+    "data_constituicao": "09/01/2026",
+    "moeda": "Real Brasileiro",
+    "benchmark": "CDI"
+  },
+  "nome": "STOCK Capital FIF Multimercado CP RL",
+  "topo": {
+    "valor_cota": {
+      "data_referencia": "2026-02-02",
+      "valor": 500,
+      "moeda": "BRL",
+      "formato": "R$",
+      "label": "Valor da Cota em 02 fev 2026"
+    },
+    "variacao_cota": {
+      "data_referencia": "2026-02-03",
+      "valor": null,
+      "unidade": "%",
+      "label": "Variação da cota em 03 fev 2026"
+    },
+    "rendimento_total_cota": {
+      "data_referencia": "2026-02-03",
+      "valor": null,
+      "unidade": "%",
+      "label": "Rendimento total da Cota em 03 fev 2026"
+    },
+    "taxa_administracao_destaque": "2,30%",
+    "prospecto_label": "De acordo com o prospecto atual"
+  },
+  "secoes_removidas": [
+    "distribuicao",
+    "documentos_nao_disponiveis",
+    "periodos_52_semanas"
+  ],
+  "id": "stock-capital-fif-multimercado-cp-rl",
+  "taxas": [
+    {
+      "nome": "Taxa de Administração",
+      "valor": "0,15% a.a."
+    },
+    {
+      "nome": "Taxa de Gestão",
+      "valor": "0,70% a.a."
+    },
+    {
+      "nome": "Taxa de Custódia",
+      "valor": "0,05% a.a."
+    },
+    {
+      "nome": "Taxa de Distribuição",
+      "valor": "Até 0,80% a.a."
+    },
+    {
+      "nome": "Taxa de Consultoria de Valores Mobiliário",
+      "valor": "0,60% a.a."
+    },
+    {
+      "nome": "Taxa de Performance",
+      "valor": "20% sobre a valorização do CDI"
+    },
+    {
+      "nome": "Taxa de Entrada",
+      "valor": "0,00%"
+    },
+    {
+      "nome": "Taxa de Saída",
+      "valor": "0,00%"
+    }
+  ],
+  "documentos": [
+    {
+      "titulo": "Análise Retroativa de Performance",
+      "pdf": "/uploads/6-analise-retroativa-de-performance-risco-e-consistencia-estrategica.pdf"
+    },
+    {
+      "titulo": "CNPJ Stock Capital Fundo FIF",
+      "pdf": "/uploads/cnpj-stock-capital-fundo-fif.pdf"
+    },
+    {
+      "titulo": "Ficha Completa de Registro",
+      "pdf": "/uploads/ficha-completa-registro-fundo.pdf"
+    },
+    {
+      "titulo": "Lâmina Stock Capital FIF Multimercado",
+      "pdf": "/uploads/lamina-stock-capital-fif-multimercado.pdf"
+    },
+    {
+      "titulo": "Protocolo de Registro",
+      "pdf": "/uploads/protocolo-registro-fundo.pdf"
+    },
+    {
+      "titulo": "Regulamento",
+      "pdf": "/uploads/1-regulamento-stock-capital-fif-.pdf"
+    }
+  ],
+  "labels": {
+    "secao_info": "Informações do fundo",
+    "valor_cota": "Valor da Cota",
+    "variacao_cota": "Variação da cota",
+    "rendimento_total_cota": "Rendimento total da Cota",
+    "benchmark": "Benchmark – CDI",
+    "prospecto": "De acordo com o prospecto atual"
+  }
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stock Capital — CMS</title>
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS do preview -->
+    <link rel="stylesheet" href="/admin/brand.css" />
+    <link rel="stylesheet" href="/admin/preview.css" />
+  </head>
+  <body>
+    <header class="sc-admin-header">
+      <a href="/" class="sc-admin-logo" aria-label="Ir para o site">
+        <img src="/admin/logo.png" alt="Stock Capital" />
+      </a>
+    </header>
+
+    <!-- Raiz exigida pelo Decap -->
+    <div id="nc-root"></div>
+
+    <!-- 1) Decap CMS (bundle LOCAL) -->
+    <script src="/admin/decap-cms-3.8.3.js" defer></script>
+
+    <!-- 2) Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+
+    <!-- 3) Seus scripts (depois do Decap) -->
+    <script src="/admin/preview.js" defer></script>
+    <script src="/admin/locales/pt.js" defer></script>
+    <script src="/admin/init.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+:root{
+  --brand-primary:#1e2241;
+  --brand-navy:#1c2846;
+}
+
+/* Header compacto, fixo no topo */
+.sc-admin-header { display: none !important; }
+
+
+.sc-admin-logo img {
+  height: 40px;   
+  display: block;
+}
+
+/* ====== LOGIN ====== */
+.nc-loginPage-logo,
+.login-logo,
+[class*="Login_logo"]{
+  width:180px !important;          /* menor */
+  height:56px !important;          /* menor */
+  background:url("/admin/logo.png") center/contain no-repeat !important;
+  display:block !important;
+}
+.nc-loginPage-logo svg,
+.login-logo svg,
+[class*="Login_logo"] svg{ display:none !important; }
+
+/* ====== APP HEADER (barra do CMS) ====== */
+.nc-appHeader{
+  background:#fff !important;
+  border-bottom:1px solid rgba(0,0,0,.06) !important;
+  height:48px !important;          /* altura real da barra */
+  min-height:48px !important;
+  padding:6px 12px !important;     /* compacta a barra */
+  align-items:center !important;
+  gap:12px !important;
+}
+
+/* aplica a logo na área de marca da barra */
+.nc-appHeader-brand,
+.nc-appHeader-logo,
+[class*="AppHeader_brand"]{
+  width:160px !important;          /* largura da área da logo */
+  height:28px !important;          /* altura visual da logo */
+  background:url("/admin/logo.png") left center / contain no-repeat !important;
+  display:block !important;
+}
+.nc-appHeader-brand svg,
+.nc-appHeader-logo svg,
+[class*="AppHeader_brand"] svg{ display:none !important; }
+
+/* ====== CONTEÚDO: não deixe “muito para baixo” ====== */
+/* o Decap já reserva espaço para a appbar; mantenha um respiro mínimo */
+#nc-root{
+  padding-top: 12px;               /* antes: 60px — agora a barra fica “mais para cima” */
+}
+
+.nc-appbar, .nc-collectionPage-header{ margin-top: 0 !important; }
+
+/* ====== BOTÕES ====== */
+.nc-toolbar button,
+.nc-collectionTopBar button,
+button[class*="Button_root"]{
+  background:var(--brand-navy) !important;
+  color:#fff !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+}
+.nc-toolbar button:hover,
+.nc-collectionTopBar button:hover,
+button[class*="Button_root"]:hover{
+  filter:brightness(1.08);
+}
+
+/* ====== LINKS ====== */
+a{ color:var(--brand-primary); }
+a:hover{ filter:brightness(1.1); }
+
+/* ====== CARTÕES/LISTAS ====== */
+[class*="Card_root"],
+.nc-entryListing-card{
+  border:1px solid rgba(0,0,0,.06) !important;
+  box-shadow:0 6px 20px rgba(0,0,0,.04) !important;
+  border-radius:14px !important;
+}
+
+/* ====== FOCUS DE INPUTS ====== */
+input:focus, textarea:focus, select:focus{
+  outline:none !important;
+  box-shadow:0 0 0 3px rgba(28,40,70,.18) !important;
+  border-color:rgba(28,40,70,.45) !important;
+}
+
