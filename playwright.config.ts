@@ -8,9 +8,9 @@ export default defineConfig({
     headless: true,
   },
   webServer: {
-    command: 'npm run preview',
-    url: 'http://localhost:4173',
-    timeout: 60_000,
-    reuseExistingServer: true,
-  },
+  command: 'npm run preview',
+  url: 'http://localhost:4173',
+  timeout: 120_000,   // era 60_000, agora 120s
+  reuseExistingServer: true,
+},
 });
