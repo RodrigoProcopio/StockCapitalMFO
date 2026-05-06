@@ -14,8 +14,8 @@ export default function SectionVideoBg({
   children,
   videoScale = 1.0,
   videoSpeed = 0.50,
-  opacity    = 0.40,
-  overlay    = 0.50,
+  opacity    = 0.15,
+  overlay    = 0.80,
 }) {
   const videoRef = useRef(null);
   const [reducedMotion, setReducedMotion] = useState(false);
