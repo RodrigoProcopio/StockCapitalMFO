@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSEO } from "../lib/useSEO.js";
-import logoSmall from "../assets/logo-small.png";
+import logoSmall from "../assets/logo-small.webp";
 
 import logoNovaFutura from "../assets/logos/nova-futura.png";
 import logoSmartSave from "../assets/logos/smartsave.png";
