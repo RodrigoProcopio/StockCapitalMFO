@@ -2,8 +2,8 @@
 import { test, expect } from '@playwright/test';
 
 test('envio de contato (happy path) mostra toast de sucesso', async ({ page }) => {
-  // Mock da function
-  await page.route('**/.netlify/functions/send-contact-to-pipefy', route =>
+  // Mock da rota que o formulário chama de verdade
+  await page.route('**/api/send-contact', route =>
     route.fulfill({
       status: 200,
       headers: { 'content-type': 'application/json' },
@@ -13,13 +13,7 @@ test('envio de contato (happy path) mostra toast de sucesso', async ({ page }) =
 
   await page.goto('/#contato');
 
-  // (1) Evita bloqueio da validação nativa do HTML
-  await page.evaluate(() => {
-    const form = document.querySelector('form[aria-labelledby="contato-title"]');
-    form?.setAttribute('novalidate', '');
-  });
-
-  // (2) Preenche campos
+  // Preenche campos
   await page.locator('#contato-nome').scrollIntoViewIfNeeded();
   await page.fill('#contato-nome', 'Fulano da Silva');
 
@@ -39,16 +33,16 @@ test('envio de contato (happy path) mostra toast de sucesso', async ({ page }) =
   const enviar = page.getByRole('button', { name: 'Enviar' });
   await enviar.scrollIntoViewIfNeeded();
 
-  // (3) Clique + esperar pela RESPONSE da função
+  // Clique + esperar pela RESPONSE da rota mockada
   await Promise.all([
     page.waitForResponse(resp =>
-      resp.url().includes('/.netlify/functions/send-contact-to-pipefy') &&
+      resp.url().includes('/api/send-contact') &&
       resp.request().method() === 'POST'
     ),
-    enviar.click(), // { force: true } se precisar
+    enviar.click(),
   ]);
 
-  // (4) Validar o toast
+  // Validar o toast
   await expect(page.getByRole('alert')).toContainText('Mensagem enviada com sucesso!', {
     timeout: 10000,
   });
