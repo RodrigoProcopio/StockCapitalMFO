@@ -139,3 +139,7 @@ h1, h2, h3, h4 {
     display: none;
   }
 }
+
+body {
+  font-family: "Poppins Variable", system-ui, -apple-system, sans-serif;
+}
