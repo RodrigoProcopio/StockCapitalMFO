@@ -104,8 +104,10 @@ export default function Hero({ goTo }) {
         <img
   src={hero1280}
   srcSet={`${hero480} 480w, ${hero768} 768w, ${hero1280} 1280w, ${hero1920} 1920w`}
-  sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1280px) 1280px, 1920px"
+  sizes="100vw"
   alt=""
+  width={1280}
+  height={720}
   className="h-full w-full object-cover object-bottom"
   loading="eager"
   decoding="async"

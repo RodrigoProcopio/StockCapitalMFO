@@ -6,11 +6,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-framer': ['framer-motion'],
-          'vendor-recharts': ['recharts'],
-          'vendor-embla': ['embla-carousel-react'],
+        manualChunks(id) {
+          if (id.includes('framer-motion')) return 'vendor-framer';
+          if (id.includes('recharts') || id.includes('d3-')) return 'vendor-recharts';
+          if (id.includes('embla-carousel')) return 'vendor-embla';
+          if (id.includes('react-dom') || id.includes('react-router')) return 'vendor-react';
+          if (id.includes('node_modules')) return 'vendor-misc';
         },
       },
     },
