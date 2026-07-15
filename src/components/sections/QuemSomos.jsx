@@ -75,7 +75,7 @@ export default function QuemSomos() {
               A <strong className="text-[#1c2846]">Stock Capital Multi-Family Office</strong> apoia famílias
               e investidores na proteção e crescimento de seu patrimônio. Com uma equipe multidisciplinar,
               unimos rigor técnico e visão estratégica para oferecer soluções alinhadas aos objetivos de
-              cada cliente, gerando segurança e confiança. Nossa abordagem inclui:
+              cada cliente, gerando segurança e confiança.
             </p>
           </div>
 

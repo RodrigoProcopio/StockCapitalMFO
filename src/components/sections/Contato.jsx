@@ -123,7 +123,7 @@ export default function Contato({ setToast, sending, setSending }) {
               </svg>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-white/70">Telefone</p>
-                <p className="mt-1 text-sm text-white/75">(41) 99766-4434</p>
+                <p className="mt-1 text-sm text-white/75">(41) 98534-5558</p>
               </div>
             </div>
 

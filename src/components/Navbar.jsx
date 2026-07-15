@@ -11,10 +11,10 @@ const NAV_LINKS = [
   { id: "nossa-filosofia",   label: "Nossa Filosofia" },
   { id: "nossa-equipe",      label: "Nossa Equipe" },
   { id: "nossos-servicos",   label: "Nossos Serviços" },
+  { id: "desempenho",        label: "Performance" },
   { to: "/fundo-de-investimento", label: "Fundo de Investimento" },
   { id: "governanca",        label: "Governança" },
   { id: "publicacoes",       label: "Publicações" },
-  { id: "desempenho",        label: "Performance" },
   { id: "formulario-api",    label: "Perfil do Investidor" },
   { id: "contato",           label: "Contato" },
 ];

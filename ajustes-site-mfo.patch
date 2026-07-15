@@ -1,0 +1,123 @@
+diff --git a/src/App.jsx b/src/App.jsx
+index af585d7..8b726d1 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -44,10 +44,10 @@ export default function App() {
+         <NossaFilosofia />
+         <NossaEquipe />
+         <NossosServicos />
+-        <NossoFundo />
++        <Desempenho />
+         <Governanca />
+         <Publicacoes />
+-        <Desempenho />
++        <NossoFundo />
+       </SectionVideoBg>
+ 
+       <FormularioApi />
+@@ -55,7 +55,7 @@ export default function App() {
+ 
+       <footer className="border-t bg-[#1c2846] py-10" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+         <div className="mx-auto max-w-7xl px-4 text-center text-sm text-white/90">
+-          © {new Date().getFullYear()} Stock Capital MFO — Todos os direitos reservados.
++          © {new Date().getFullYear()} Stock Capital Multi-Family Office — Todos os direitos reservados.
+         </div>
+       </footer>
+ 
+diff --git a/src/components/Navbar.jsx b/src/components/Navbar.jsx
+index eda1494..f6bd000 100644
+--- a/src/components/Navbar.jsx
++++ b/src/components/Navbar.jsx
+@@ -11,10 +11,10 @@ const NAV_LINKS = [
+   { id: "nossa-filosofia",   label: "Nossa Filosofia" },
+   { id: "nossa-equipe",      label: "Nossa Equipe" },
+   { id: "nossos-servicos",   label: "Nossos Serviços" },
++  { id: "desempenho",        label: "Performance" },
+   { to: "/fundo-de-investimento", label: "Fundo de Investimento" },
+   { id: "governanca",        label: "Governança" },
+   { id: "publicacoes",       label: "Publicações" },
+-  { id: "desempenho",        label: "Performance" },
+   { id: "formulario-api",    label: "Perfil do Investidor" },
+   { id: "contato",           label: "Contato" },
+ ];
+diff --git a/src/components/sections/Contato.jsx b/src/components/sections/Contato.jsx
+index dfb9650..353a141 100644
+--- a/src/components/sections/Contato.jsx
++++ b/src/components/sections/Contato.jsx
+@@ -123,7 +123,7 @@ export default function Contato({ setToast, sending, setSending }) {
+               </svg>
+               <div>
+                 <p className="text-xs font-semibold uppercase tracking-widest text-white/70">Telefone</p>
+-                <p className="mt-1 text-sm text-white/75">(41) 99766-4434</p>
++                <p className="mt-1 text-sm text-white/75">(41) 98534-5558</p>
+               </div>
+             </div>
+ 
+diff --git a/src/components/sections/Governanca.jsx b/src/components/sections/Governanca.jsx
+index 2734630..b57df1f 100644
+--- a/src/components/sections/Governanca.jsx
++++ b/src/components/sections/Governanca.jsx
+@@ -4,6 +4,7 @@ const items = [
+   "Estrutura fiduciária sólida, com comitês internos e processos auditáveis;",
+   "Política de prevenção a conflitos de interesse;",
+   "Compliance constante, com acompanhamento regulatório contínuo;",
++  "Sustentabilidade e Impacto, com critérios ESG integrados às decisões de investimento e governança;",
+   "Relatórios gerenciais e reuniões periódicas para alinhamento e tomada de decisão.",
+ ];
+ 
+@@ -17,7 +18,7 @@ export default function Governanca() {
+ 
+   // Entrada ao scroll
+   const [leftVisible, setLeftVisible] = useState(false);
+-  const [itemsVisible, setItemsVisible] = useState([false, false, false, false]);
++  const [itemsVisible, setItemsVisible] = useState([false, false, false, false, false]);
+ 
+   // Mede largura do título para a linha
+   useEffect(() => {
+@@ -174,7 +175,7 @@ export default function Governanca() {
+               className="h-px w-full"
+               style={{
+                 backgroundColor: "rgba(28,40,70,0.10)",
+-                opacity: itemsVisible[3] ? 1 : 0,
++                opacity: itemsVisible[items.length - 1] ? 1 : 0,
+                 transition: "opacity 0.5s ease 0.1s",
+               }}
+             />
+diff --git a/src/components/sections/NossaFilosofia.jsx b/src/components/sections/NossaFilosofia.jsx
+index c87c741..9c1f5e4 100644
+--- a/src/components/sections/NossaFilosofia.jsx
++++ b/src/components/sections/NossaFilosofia.jsx
+@@ -103,7 +103,6 @@ export default function NossaFilosofia() {
+             </p>
+             <p className="text-sm leading-relaxed text-justify md:text-base" style={{ color: "rgba(51,56,70,0.82)" }}>
+               Buscamos garantir solidez patrimonial sem perder de vista a evolução constante.
+-              Nosso modelo de investimento abrange:
+             </p>
+           </div>
+ 
+diff --git a/src/components/sections/Publicacoes.jsx b/src/components/sections/Publicacoes.jsx
+index 08b2237..fb7de66 100644
+--- a/src/components/sections/Publicacoes.jsx
++++ b/src/components/sections/Publicacoes.jsx
+@@ -143,7 +143,7 @@ export default function Publicacoes() {
+               transition: "opacity 0.6s ease 0.18s, transform 0.6s ease 0.18s",
+             }}
+           >
+-            Análises e materiais proprietários da Stock Capital MFO.
++            Análises, Relatórios e Documentos Institucionais.
+           </p>
+         </div>
+ 
+diff --git a/src/components/sections/QuemSomos.jsx b/src/components/sections/QuemSomos.jsx
+index 12eaf48..934d089 100644
+--- a/src/components/sections/QuemSomos.jsx
++++ b/src/components/sections/QuemSomos.jsx
+@@ -75,7 +75,7 @@ export default function QuemSomos() {
+               A <strong className="text-[#1c2846]">Stock Capital Multi-Family Office</strong> apoia famílias
+               e investidores na proteção e crescimento de seu patrimônio. Com uma equipe multidisciplinar,
+               unimos rigor técnico e visão estratégica para oferecer soluções alinhadas aos objetivos de
+-              cada cliente, gerando segurança e confiança. Nossa abordagem inclui:
++              cada cliente, gerando segurança e confiança.
+             </p>
+           </div>
+ 

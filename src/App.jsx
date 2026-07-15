@@ -44,10 +44,10 @@ export default function App() {
         <NossaFilosofia />
         <NossaEquipe />
         <NossosServicos />
-        <NossoFundo />
+        <Desempenho />
         <Governanca />
         <Publicacoes />
-        <Desempenho />
+        <NossoFundo />
       </SectionVideoBg>
 
       <FormularioApi />
@@ -55,7 +55,7 @@ export default function App() {
 
       <footer className="border-t bg-[#1c2846] py-10" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
         <div className="mx-auto max-w-7xl px-4 text-center text-sm text-white/90">
-          © {new Date().getFullYear()} Stock Capital MFO — Todos os direitos reservados.
+          © {new Date().getFullYear()} Stock Capital Multi-Family Office — Todos os direitos reservados.
         </div>
       </footer>
 

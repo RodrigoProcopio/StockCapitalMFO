@@ -143,7 +143,7 @@ export default function Publicacoes() {
               transition: "opacity 0.6s ease 0.18s, transform 0.6s ease 0.18s",
             }}
           >
-            Análises e materiais proprietários da Stock Capital MFO.
+            Análises, Relatórios e Documentos Institucionais.
           </p>
         </div>
 

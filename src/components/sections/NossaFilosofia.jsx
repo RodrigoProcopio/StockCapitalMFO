@@ -103,7 +103,6 @@ export default function NossaFilosofia() {
             </p>
             <p className="text-sm leading-relaxed text-justify md:text-base" style={{ color: "rgba(51,56,70,0.82)" }}>
               Buscamos garantir solidez patrimonial sem perder de vista a evolução constante.
-              Nosso modelo de investimento abrange:
             </p>
           </div>
 

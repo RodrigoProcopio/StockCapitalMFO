@@ -4,6 +4,7 @@ const items = [
   "Estrutura fiduciária sólida, com comitês internos e processos auditáveis;",
   "Política de prevenção a conflitos de interesse;",
   "Compliance constante, com acompanhamento regulatório contínuo;",
+  "Sustentabilidade e Impacto, com critérios ESG integrados às decisões de investimento e governança;",
   "Relatórios gerenciais e reuniões periódicas para alinhamento e tomada de decisão.",
 ];
 
@@ -17,7 +18,7 @@ export default function Governanca() {
 
   // Entrada ao scroll
   const [leftVisible, setLeftVisible] = useState(false);
-  const [itemsVisible, setItemsVisible] = useState([false, false, false, false]);
+  const [itemsVisible, setItemsVisible] = useState([false, false, false, false, false]);
 
   // Mede largura do título para a linha
   useEffect(() => {
@@ -174,7 +175,7 @@ export default function Governanca() {
               className="h-px w-full"
               style={{
                 backgroundColor: "rgba(28,40,70,0.10)",
-                opacity: itemsVisible[3] ? 1 : 0,
+                opacity: itemsVisible[items.length - 1] ? 1 : 0,
                 transition: "opacity 0.5s ease 0.1s",
               }}
             />
