@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import hero480 from "../assets/hero-480.webp";
-import hero768 from "../assets/hero-768.webp";
-import hero1280 from "../assets/hero-1280.webp";
-import hero1920 from "../assets/hero-1920.webp";
+import hero480 from "../assets/hero-480.webm";
+import hero768 from "../assets/hero-768.webm";
+import hero1280 from "../assets/hero-1280.webm";
+import hero1920 from "../assets/hero-1920.webm";
 
 const HERO_BTNS = [
   { label: "Nossos Serviços",       type: "scroll", target: "nossos-servicos" },
