@@ -5,7 +5,7 @@ const STATS = [
   { label: "Benchmark", value: "CDI" },
   { label: "Símbolo", value: "STOCK" },
   { label: "Classe", value: "Multimercado" },
-  { label: "Desde", value: "2021" },
+  { label: "Desde", value: "2026" },
 ];
 
 // Helper: retorna estilo de fade+slide com delay
