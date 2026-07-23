@@ -1,4 +1,5 @@
 import { useSEO } from "../lib/useSEO.js";
+import PageLayout from "../components/PageLayout.jsx";
 
 
 function loadDocs() {

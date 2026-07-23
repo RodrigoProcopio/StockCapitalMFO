@@ -1,4 +1,5 @@
 import { useSEO } from "../lib/useSEO.js";
+import PageLayout from "../components/PageLayout.jsx";
 
 function loadDocs() {
   const files = import.meta.glob("/src/content/compliance/*.json", { eager: true });

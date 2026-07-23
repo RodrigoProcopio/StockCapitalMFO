@@ -1,4 +1,5 @@
 import { useSEO } from "../lib/useSEO.js";
+import PageLayout from "../components/PageLayout.jsx";
 
 const cartasModules = import.meta.glob("../content/cartas/*.json", { eager: true });
 

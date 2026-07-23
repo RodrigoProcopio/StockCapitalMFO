@@ -396,9 +396,9 @@ function DocCard({ titulo, data, pdf }) {
    bg-video-fundo.webp é um WebM com extensão .webp — servido como video/webm
    ──────────────────────────────────────────────────────────────────────── */
 const VIDEO_SRC = "/bg-video-fundo.webm";
-const OPACITY    = 0.50;
+const OPACITY    = 0.08;
 const SPEED      = 1.0;
-const OVERLAY    = 0.50;
+const OVERLAY    = 0.65;
 const OBJECT_FIT = "cover";
 
 function FundoVideoBg() {
