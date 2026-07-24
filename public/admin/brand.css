@@ -1,6 +1,17 @@
 :root{
-  --brand-primary:#1e2241;
+  /* Mesma paleta do site (ver src/index.css): --text-heading / --brand-navy */
+  --brand-primary:#1c2846;
   --brand-navy:#1c2846;
+  --brand-navy-hover:#263570;
+  --text-main:#333846;
+  --bg-subtle:#f5f5f7;
+  --card-border:#d6d6d6;
+}
+
+/* Tipografia igual ao site (Poppins). Fallback pro padrão do Decap caso a
+   fonte ainda não tenha carregado, pra nunca ficar sem texto. */
+#nc-root, .sc-admin-header {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* Header próprio não é mais usado: a logo agora é injetada via JS
@@ -31,63 +42,35 @@
 .login-logo svg,
 [class*="Login_logo"] svg{ display:none !important; }
 
-/* ====== APP HEADER (barra do CMS) ====== */
-.nc-appHeader{
-  background:#fff !important;
-  border-bottom:1px solid rgba(0,0,0,.06) !important;
-  height:48px !important;          /* altura real da barra */
-  min-height:48px !important;
-  padding:6px 12px !important;     /* compacta a barra */
-  align-items:center !important;
-  gap:12px !important;
-}
-
-/* aplica a logo na área de marca da barra */
-.nc-appHeader-brand,
-.nc-appHeader-logo,
-[class*="AppHeader_brand"]{
-  width:160px !important;          /* largura da área da logo */
-  height:28px !important;          /* altura visual da logo */
-  background:url("/admin/logo.png") left center / contain no-repeat !important;
-  display:block !important;
-}
-.nc-appHeader-brand svg,
-.nc-appHeader-logo svg,
-[class*="AppHeader_brand"] svg{ display:none !important; }
-
 /* ====== CONTEÚDO: não deixe “muito para baixo” ====== */
 /* o Decap já reserva espaço para a appbar; mantenha um respiro mínimo */
 #nc-root{
-  padding-top: 12px;               /* antes: 60px — agora a barra fica “mais para cima” */
+  padding-top: 12px;
 }
 
-.nc-appbar, .nc-collectionPage-header{ margin-top: 0 !important; }
-
-/* ====== BOTÕES ====== */
-.nc-toolbar button,
-.nc-collectionTopBar button,
-button[class*="Button_root"]{
+/* ====== BOTÕES PRINCIPAIS ======
+   Classes reais confirmadas no bundle do Decap 3.8.3 (CSS-in-JS com sufixo
+   estável, ex.: "css-xxxxx-PublishButton"). Mantemos os botões secundários
+   (Now/Clear do calendário, Choose a file, etc.) com o estilo padrão do
+   Decap para não perder a distinção visual entre ação principal e ação
+   auxiliar. */
+[class*="PublishButton"],
+[class*="CollectionTopNewButton"],
+[class*="AppHeaderQuickNewButton"]{
   background:var(--brand-navy) !important;
   color:#fff !important;
-  border:1px solid rgba(0,0,0,.06) !important;
 }
-.nc-toolbar button:hover,
-.nc-collectionTopBar button:hover,
-button[class*="Button_root"]:hover{
-  filter:brightness(1.08);
+[class*="PublishButton"]:hover,
+[class*="CollectionTopNewButton"]:hover,
+[class*="AppHeaderQuickNewButton"]:hover{
+  background:var(--brand-navy-hover) !important;
 }
 
-/* ====== LINKS ====== */
-a{ color:var(--brand-primary); }
-a:hover{ filter:brightness(1.1); }
-
-/* ====== CARTÕES/LISTAS ====== */
-[class*="Card_root"],
-.nc-entryListing-card{
-  border:1px solid rgba(0,0,0,.06) !important;
-  box-shadow:0 6px 20px rgba(0,0,0,.04) !important;
-  border-radius:14px !important;
-}
+/* ====== LINKS ======
+   Só os links "de texto" do conteúdo (não os itens de navegação do topo,
+   que já têm o próprio estilo ativo/inativo do Decap). */
+[class*="AppHeaderSiteLink"]{ color:#7b8290; }
+a[class*="Link"]:not([class*="AppHeader"]):not([class*="button"]){ color:var(--brand-primary); }
 
 /* ====== FOCUS DE INPUTS ====== */
 input:focus, textarea:focus, select:focus{

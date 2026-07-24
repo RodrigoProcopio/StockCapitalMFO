@@ -84,7 +84,8 @@ collections:
   # ==============================
 
   - name: "charts_config"
-    label: "Gráficos • Configurações"
+    label: "Gráficos • Configurações (técnico)"
+    description: "Área técnica. Controla como os gráficos do site são desenhados (ligados aos arquivos de 'Gráficos • Dados'). Alterações aqui podem quebrar a exibição de um gráfico — em caso de dúvida, consulte o desenvolvedor antes de editar."
     format: "json"
     files:
 
@@ -95,22 +96,27 @@ collections:
           - { name: "type", widget: "hidden", default: "desempenho" }
           - { name: "title", label: "Título", widget: "string" }
           - { name: "subtitle", label: "Subtítulo", widget: "string", required: false }
-          - { name: "notes", label: "Notas", widget: "text", required: false }
-          - { name: "autoplay_seconds", label: "Auto-play", widget: "number", value_type: "int", min: 0, default: 8 }
+          - { name: "notes", label: "Notas (rodapé do gráfico)", widget: "text", required: false }
+          - { name: "autoplay_seconds", label: "Intervalo do auto-play (segundos)", widget: "number", value_type: "int", min: 0, default: 8, hint: "A cada quantos segundos o gráfico alterna automaticamente. Use 0 para desativar o auto-play." }
 
-          - label: "Acumulação"
+          - label: "Modo de acumulação"
             name: "accumulation"
             widget: "select"
-            options: ["sum", "compound"]
+            options:
+              - { label: "Soma simples (percentuais somados mês a mês)", value: "sum" }
+              - { label: "Composto (juros sobre juros, mês a mês)", value: "compound" }
             default: "sum"
+            hint: "Como os valores mensais de cada série são acumulados no gráfico."
 
-          - label: "Séries"
+          - label: "Séries do gráfico"
             name: "series"
             widget: "list"
+            summary: "{{fields.label}}"
+            hint: "Cada série é uma linha do gráfico. \"Fonte (JSON)\" precisa apontar para um arquivo cadastrado em 'Gráficos • Dados'."
             fields:
-              - { name: "label", label: "Rótulo", widget: "string" }
-              - { name: "source", label: "Fonte (JSON)", widget: "file", allow_types: ["json"] }
-              - { name: "y", label: "Campo Y", widget: "string", default: "rendimento" }
+              - { name: "label", label: "Rótulo (aparece na legenda)", widget: "string" }
+              - { name: "source", label: "Fonte (arquivo JSON de dados)", widget: "file", allow_types: ["json"], hint: "Escolha um arquivo de dados já cadastrado em Gráficos • Dados." }
+              - { name: "y", label: "Campo lido do arquivo de dados", widget: "string", default: "rendimento", hint: "Nome do campo numérico dentro do arquivo de dados (normalmente \"rendimento\")." }
 
       - name: "volatilidade_ltm"
         label: "Gráfico: Volatilidade"
@@ -118,7 +124,7 @@ collections:
         fields:
           - { name: "type", widget: "hidden", default: "volatilidade" }
           - { name: "title", label: "Título", widget: "string" }
-          - { name: "source", label: "Fonte (JSON)", widget: "file", allow_types: ["json"] }
+          - { name: "source", label: "Fonte (arquivo JSON de dados)", widget: "file", allow_types: ["json"], hint: "Escolha um arquivo de dados já cadastrado em Gráficos • Dados." }
 
       - name: "risco_retorno"
         label: "Gráfico: Risco-Retorno"
@@ -126,14 +132,15 @@ collections:
         fields:
           - { name: "type", widget: "hidden", default: "risco-retorno" }
           - { name: "title", label: "Título", widget: "string" }
-          - { name: "source", label: "Fonte (JSON)", widget: "file", allow_types: ["json"] }
+          - { name: "source", label: "Fonte (arquivo JSON de dados)", widget: "file", allow_types: ["json"], hint: "Escolha um arquivo de dados já cadastrado em Gráficos • Dados." }
 
   # ==============================
   # GRÁFICOS - DADOS
   # ==============================
 
   - name: "charts_data"
-    label: "Gráficos • Dados"
+    label: "Gráficos • Dados (técnico)"
+    description: "Área técnica. São os números por trás dos gráficos do site (diferente da tabela de rentabilidade da página de cada Fundo — os dois não se atualizam automaticamente um pelo outro)."
     format: "json"
     files:
 
@@ -141,9 +148,10 @@ collections:
         label: "Dados • Desempenho (Portfólio)"
         file: "src/content/rentabilidade/data/desempenho/mfo-portfolio.json"
         fields:
-          - label: "Série"
+          - label: "Série mensal"
             name: "series"
             widget: "list"
+            summary: "{{fields.date}} — {{fields.rendimento}}%"
             fields:
               - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
               - { label: "Rendimento (%)", name: "rendimento", widget: "number", value_type: "float" }
@@ -152,9 +160,10 @@ collections:
         label: "Dados • Risco-Retorno"
         file: "src/content/rentabilidade/data/risco-retorno/sortino-sharpe.json"
         fields:
-          - label: "Série"
+          - label: "Série mensal"
             name: "series"
             widget: "list"
+            summary: "{{fields.date}} — Sortino {{fields.sortino}} / Sharpe {{fields.sharpe}}"
             fields:
               - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
               - { label: "Sortino", name: "sortino", widget: "number", value_type: "float" }
@@ -171,17 +180,19 @@ collections:
     extension: "json"
     format: "json"
     slug: "{{slug}}"
+    summary: "{{fields.nome}} — {{fields.categoria_label}}"
 
     fields:
-      - { label: "ID", name: "id", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Categoria (label)", name: "categoria_label", widget: "string", required: false }
+      - { label: "ID", name: "id", widget: "string", hint: "Identificador interno do fundo. Não precisa mudar depois de criado." }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Usado na URL da página do fundo no site. Evite espaços e acentos." }
+      - { label: "Categoria (rótulo)", name: "categoria_label", widget: "string", required: false, hint: "Ex.: RENDA VARIÁVEL. Aparece como etiqueta na página do fundo." }
       - { label: "Nome do Fundo", name: "nome", widget: "string" }
-      - { label: "Símbolo", name: "simbolo", widget: "string" }
+      - { label: "Símbolo", name: "simbolo", widget: "string", hint: "Sigla curta usada em destaque na página do fundo." }
 
-      - label: "Topo"
+      - label: "Topo (cabeçalho da página do fundo)"
         name: "topo"
         widget: "object"
+        collapsed: true
         fields:
           - { label: "Taxa Administração Destaque", name: "taxa_administracao_destaque", widget: "string", required: false }
           - { label: "Texto Prospecto (abaixo da taxa)", name: "prospecto_label", widget: "string", required: false }
@@ -189,30 +200,34 @@ collections:
           - label: "Card • Valor da Cota"
             name: "valor_cota"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Título do card (opcional)", name: "label", widget: "string", required: false }
-              - { label: "Data de referência (YYYY-MM-DD)", name: "data_referencia", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Data de referência", name: "data_referencia", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false, hint: "Data usada para calcular \"atualizado em\" no card do site." }
               - { label: "Valor (R$)", name: "valor", widget: "number", value_type: "float", required: false }
 
           - label: "Card • Variação da Cota"
             name: "variacao_cota"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Título do card (opcional)", name: "label", widget: "string", required: false }
-              - { label: "Data de referência (YYYY-MM-DD)", name: "data_referencia", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Data de referência", name: "data_referencia", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
               - { label: "Valor (%)", name: "valor", widget: "number", value_type: "float", required: false }
 
           - label: "Card • Rendimento Total da Cota"
             name: "rendimento_total_cota"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Título do card (opcional)", name: "label", widget: "string", required: false }
-              - { label: "Data de referência (YYYY-MM-DD)", name: "data_referencia", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Data de referência", name: "data_referencia", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
               - { label: "Valor (%)", name: "valor", widget: "number", value_type: "float", required: false }
 
       - label: "Características-chave"
         name: "caracteristicas_chave"
         widget: "object"
+        collapsed: true
         fields:
           - { label: "Patrimônio líquido do fundo", name: "patrimonio_liquido", widget: "string", required: false }
           - { label: "Bolsa", name: "bolsa", widget: "string", required: false }
@@ -226,6 +241,7 @@ collections:
       - label: "Características do portfólio"
         name: "caracteristicas_portfolio"
         widget: "object"
+        collapsed: true
         fields:
           - { label: "Número de ativos na carteira", name: "numero_ativos_carteira", widget: "number", value_type: "int", required: false }
           - { label: "Retorno 12m", name: "retorno_12m", widget: "string", required: false }
@@ -237,11 +253,13 @@ collections:
       - label: "Exposição"
         name: "exposicao"
         widget: "object"
+        collapsed: true
         fields:
           - label: "Itens (Setores)"
             name: "itens"
             widget: "list"
             summary: "{{fields.setor}} — {{fields.percentual}}%"
+            hint: "A soma dos percentuais deve fechar em 100%."
             fields:
               - { label: "Setor", name: "setor", widget: "string" }
               - { label: "Percentual (%)", name: "percentual", widget: "number", value_type: "float", min: 0, max: 100 }
@@ -249,12 +267,14 @@ collections:
       - label: "Rentabilidade"
         name: "rentabilidade"
         widget: "object"
+        collapsed: true
         fields:
-          - { label: "Formato do mês (texto)", name: "formato_mes", widget: "string", default: "MM/AAAA", required: false }
-          - label: "Tabela Mensal"
+          - { label: "Formato do mês (referência)", name: "formato_mes", widget: "string", default: "MM/AAAA", required: false, hint: "Apenas um lembrete do padrão usado abaixo (MM/AAAA). Não precisa alterar." }
+          - label: "Tabela mensal (Fundo x CDI)"
             name: "tabela_mensal"
             widget: "list"
             summary: "{{fields.mes}} • Fundo: {{fields.fundo}}% • CDI: {{fields.cdi}}%"
+            hint: "Uma linha por mês. Para adicionar o mês mais recente, clique em \"Adicionar\" no final da lista."
             fields:
               - {
                   label: "Mês (MM/AAAA)",
@@ -269,6 +289,7 @@ collections:
         name: "taxas"
         widget: "list"
         required: false
+        summary: "{{fields.nome}} — {{fields.valor}}"
         fields:
           - { label: "Nome", name: "nome", widget: "string" }
           - { label: "Valor", name: "valor", widget: "string" }
@@ -276,6 +297,7 @@ collections:
       - label: "Documentos"
         name: "documentos"
         widget: "list"
+        summary: "{{fields.titulo}}"
         fields:
           - { label: "Título", name: "titulo", widget: "string" }
           - { label: "Data (DD/MM/AAAA)", name: "data", widget: "string", required: false }

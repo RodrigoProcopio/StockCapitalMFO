@@ -1,48 +1,300 @@
 // public/admin/locales/pt.js
+//
+// Base: tradução oficial "pt" da lib decap-cms-locales (MIT), que cobre
+// praticamente 100% das strings da interface do Decap CMS. Alguns trechos
+// foram ajustados/complementados para o vocabulário do painel da Stock
+// Capital (ex.: nomes de coleções, mensagens específicas).
 window.DECAP_CMS_LOCALE_PT = {
+  auth: {
+    login: "Entrar",
+    loggingIn: "Entrando...",
+    loginWithNetlifyIdentity: "Entrar com o Netlify Identity",
+    loginWithAzure: "Entrar com o Azure",
+    loginWithBitbucket: "Entrar com o Bitbucket",
+    loginWithGitHub: "Entrar com o GitHub",
+    loginWithGitLab: "Entrar com o GitLab",
+    loginWithGitea: "Entrar com o Gitea",
+    errors: {
+      email: "Certifique-se de inserir seu e-mail.",
+      password: "Por favor, insira sua senha.",
+      identitySettings:
+        "Não foi possível acessar as configurações de identidade. Ao usar o back-end git-gateway, certifique-se de habilitar o serviço Identity e o Git Gateway.",
+    },
+  },
   app: {
-    header: { content: "Conteúdos", media: "Mídia", quickAdd: "Adicionar", logout: "Sair" },
+    header: {
+      content: "Conteúdos",
+      workflow: "Fluxo de Trabalho",
+      media: "Mídia",
+      quickAdd: "Adicionar",
+    },
+    app: {
+      errorHeader: "Erro ao carregar a configuração do CMS",
+      configErrors: "Erros de configuração",
+      checkConfigYml: "Verifique o arquivo config.yml.",
+      loadingConfig: "Carregando configuração...",
+      waitingBackend: "Aguardando o back-end...",
+    },
+    notFoundPage: {
+      header: "Não encontrado",
+    },
   },
   collection: {
-    sidebar: { searchAll: "Buscar tudo" },
+    sidebar: {
+      collections: "Coleções",
+      allCollections: "Todas as coleções",
+      searchAll: "Buscar tudo",
+      searchIn: "Buscar em",
+    },
+    collectionTop: {
+      sortBy: "Ordenar por",
+      viewAs: "Visualizar como",
+      newButton: "Novo(a) %{collectionLabel}",
+      newButtonAriaLabel: "Criar uma entrada do tipo %{collectionLabel}",
+      ascending: "Crescente",
+      descending: "Decrescente",
+      searchResults: 'Resultados da busca por "%{searchTerm}"',
+      searchResultsInCollection: 'Resultados da busca por "%{searchTerm}" em %{collection}',
+      filterBy: "Filtrar por",
+      groupBy: "Agrupar por",
+    },
     entries: {
       loadingEntries: "Carregando itens...",
+      cachingEntries: "Armazenando itens em cache...",
+      longerLoading: "Isso pode levar alguns instantes",
       noEntries: "Nenhum item encontrado",
-      createNew: "Novo {{collectionLabel}}",
-      addNew: "Novo {{collectionLabel}}",
     },
-    top: {
-      sortBy: "Ordenar por",    // botão "Sort by"
-      viewAsList: "Lista",
-      viewAsGrid: "Grade",
+    groups: {
+      other: "Outro",
+      negateLabel: "Não %{label}",
+    },
+    defaultFields: {
+      author: { label: "Autor" },
+      updatedOn: { label: "Atualizado em" },
+    },
+    table: {
+      collection: "Coleção",
     },
   },
   editor: {
+    editorControl: {
+      field: { optional: "opcional" },
+    },
+    editorControlPane: {
+      widget: {
+        required: "%{fieldLabel} é obrigatório.",
+        regexPattern: "%{fieldLabel} não corresponde ao padrão esperado: %{pattern}.",
+        processing: "%{fieldLabel} está processando.",
+        range: "%{fieldLabel} deve estar entre %{minValue} e %{maxValue}.",
+        min: "%{fieldLabel} deve ser, no mínimo, %{minValue}.",
+        max: "%{fieldLabel} deve ser, no máximo, %{maxValue}.",
+        rangeCount: "%{fieldLabel} deve ter entre %{minCount} e %{maxCount} itens.",
+        rangeCountExact: "%{fieldLabel} deve ter exatamente %{count} itens.",
+        rangeMin: "%{fieldLabel} deve ter, pelo menos, %{minCount} itens.",
+        rangeMax: "%{fieldLabel} deve ter %{maxCount} itens ou menos.",
+        invalidPath: "'%{path}' não é um caminho válido",
+        pathExists: "O caminho '%{path}' já existe",
+      },
+      i18n: { writingInLocale: "Escrevendo em %{locale}" },
+    },
+    editor: {
+      onLeavePage: "Existem alterações não salvas. Deseja sair mesmo assim?",
+      onUpdatingWithUnsavedChanges:
+        "Há alterações não salvas. Salve-as antes de atualizar o status.",
+      onPublishingNotReady: 'Altere o status para "Pronto" antes de publicar.',
+      onPublishingWithUnsavedChanges: "Há alterações não salvas. Salve-as antes de publicar.",
+      onPublishing: "Tem certeza que deseja publicar esta entrada?",
+      onUnpublishing: "Tem certeza que deseja despublicar esta entrada?",
+      onDeleteWithUnsavedChanges:
+        "Tem certeza que deseja excluir esta entrada publicada e as alterações não salvas da sessão atual?",
+      onDeletePublishedEntry: "Tem certeza que deseja excluir esta entrada publicada?",
+      onDeleteUnpublishedChangesWithUnsavedChanges:
+        "Isso vai excluir todas as alterações não publicadas desta entrada, além das alterações não salvas da sessão atual. Deseja continuar?",
+      onDeleteUnpublishedChanges:
+        "Todas as alterações não publicadas nesta entrada serão excluídas. Deseja continuar?",
+      loadingEntry: "Carregando item...",
+      confirmLoadBackup: "Encontramos um backup local desta entrada. Deseja usá-lo?",
+    },
+    editorInterface: {
+      toggleI18n: "Alternar idioma",
+      togglePreview: "Alternar pré-visualização",
+      toggleScrollSync: "Sincronizar rolagem",
+    },
     editorToolbar: {
       publishing: "Publicando...",
       publish: "Publicar",
+      published: "Publicado",
       unpublish: "Despublicar",
+      duplicate: "Duplicar",
+      unpublishing: "Despublicando...",
+      publishAndCreateNew: "Publicar e criar novo(a)",
+      publishAndDuplicate: "Publicar e duplicar",
+      deleteUnpublishedChanges: "Excluir alterações não publicadas",
+      deleteUnpublishedEntry: "Excluir entrada não publicada",
+      deletePublishedEntry: "Excluir entrada publicada",
       deleteEntry: "Excluir",
-      publishChanges: "Publicar alterações",
-      save: "Salvar",
       saving: "Salvando...",
+      save: "Salvar",
+      statusInfoTooltipDraft:
+        "Entrada marcada como rascunho. Para enviá-la à revisão, mude o status para 'Em revisão'.",
+      statusInfoTooltipInReview:
+        "Entrada em revisão. Você ainda pode fazer alterações enquanto ela é revisada.",
+      deleting: "Excluindo...",
       updating: "Atualizando...",
+      status: "Status: %{status}",
+      backCollection: "Editando na coleção %{collectionLabel}",
+      unsavedChanges: "Alterações não salvas",
+      changesSaved: "Alterações salvas",
+      draft: "Rascunho",
+      inReview: "Em revisão",
+      ready: "Pronto",
+      publishNow: "Publicar agora",
+      deployPreviewPendingButtonLabel: "Verificar pré-visualização",
+      deployPreviewButtonLabel: "Ver pré-visualização",
+      deployButtonLabel: "Ver no site",
     },
-    editor: {
-      onLeavePageConfirm: "Existem alterações não salvas. Deseja sair mesmo?",
-    },
-    editorControlPane: {
-      widget: { required: "Obrigatório", invalid: "Valor inválido" },
+    editorWidgets: {
+      markdown: {
+        bold: "Negrito",
+        italic: "Itálico",
+        code: "Código",
+        link: "Link",
+        linkPrompt: "Insira a URL do link",
+        headings: "Cabeçalho",
+        quote: "Citação",
+        bulletedList: "Lista com marcadores",
+        numberedList: "Lista numerada",
+        addComponent: "Adicionar componente",
+        richText: "Texto formatado",
+        markdown: "Markdown",
+      },
+      image: {
+        choose: "Escolher uma imagem",
+        chooseUrl: "Inserir por URL",
+        replaceUrl: "Substituir por URL",
+        promptUrl: "Insira a URL da imagem",
+        chooseDifferent: "Escolher outra imagem",
+        remove: "Remover imagem",
+      },
+      file: {
+        choose: "Escolher um arquivo",
+        chooseUrl: "Inserir por URL",
+        replaceUrl: "Substituir por URL",
+        promptUrl: "Insira a URL do arquivo",
+        chooseDifferent: "Escolher outro arquivo",
+        remove: "Remover arquivo",
+      },
+      unknownControl: { noControl: "Nenhum controle para o widget '%{widget}'." },
+      unknownPreview: { noPreview: "Nenhuma pré-visualização para o widget '%{widget}'." },
+      headingOptions: {
+        headingOne: "Título nível 1",
+        headingTwo: "Título nível 2",
+        headingThree: "Título nível 3",
+        headingFour: "Título nível 4",
+        headingFive: "Título nível 5",
+        headingSix: "Título nível 6",
+      },
+      datetime: { now: "Agora", clear: "Limpar" },
+      list: { add: "Adicionar %{item}", addType: "Adicionar item: %{item}" },
     },
   },
   mediaLibrary: {
-    mediaLibrary: { loading: "Carregando...", noResults: "Sem resultados." },
-    mediaLibraryCard: { draft: "Rascunho" },
-    mediaLibraryActions: {
-      insert: "Inserir",
-      choose: "Escolher um arquivo",   // "Choose a file"
-      url: "Inserir por URL",          // "Insert from URL"
+    mediaLibraryCard: {
+      draft: "Rascunho",
+      copy: "Copiar",
+      copyUrl: "Copiar URL",
+      copyPath: "Copiar caminho",
+      copyName: "Copiar nome",
+      copied: "Copiado",
+    },
+    mediaLibrary: {
+      onDelete: "Tem certeza que deseja excluir os arquivos selecionados?",
+      fileTooLarge: "Arquivo muito grande.\nO limite configurado é %{size} kB.",
+    },
+    mediaLibraryModal: {
+      loading: "Carregando...",
+      noResults: "Nenhum resultado.",
+      noAssetsFound: "Nenhum arquivo encontrado.",
+      noImagesFound: "Nenhuma imagem encontrada.",
+      private: "Privado ",
+      images: "Imagens",
+      mediaAssets: "Arquivos de mídia",
+      search: "Buscar...",
+      uploading: "Enviando...",
+      upload: "Enviar arquivo",
+      download: "Baixar",
+      deleting: "Excluindo...",
+      deleteSelected: "Excluir selecionado(s)",
+      chooseSelected: "Escolher selecionado(s)",
     },
   },
-  ui: { default: { loading: "Carregando..." } },
+  ui: {
+    default: {
+      loading: "Carregando...",
+      goBackToSite: "Voltar ao site",
+    },
+    errorBoundary: {
+      title: "Erro",
+      details: "Ocorreu um erro - por favor ",
+      reportIt: "relate o problema.",
+      detailsHeading: "Detalhes",
+      privacyWarning:
+        "Ao abrir uma issue, ela já vem com a mensagem de erro e o log de depuração preenchidos.\nVerifique se não há dados sensíveis antes de enviar.",
+      recoveredEntry: {
+        heading: "Documento recuperado",
+        warning: "Copie e cole isso em algum lugar seguro antes de sair!",
+        copyButtonLabel: "Copiar para a área de transferência",
+      },
+    },
+    settingsDropdown: {
+      logOut: "Sair",
+    },
+    toast: {
+      onFailToLoadEntries: "Falha ao carregar a entrada: %{details}",
+      onFailToLoadDeployPreview: "Falha ao carregar a pré-visualização: %{details}",
+      onFailToPersist: "Falha ao salvar a entrada: %{details}",
+      onFailToDelete: "Falha ao excluir a entrada: %{details}",
+      onFailToUpdateStatus: "Falha ao atualizar o status: %{details}",
+      missingRequiredField: "Falta preencher um campo obrigatório antes de salvar.",
+      entrySaved: "Entrada salva",
+      entryPublished: "Entrada publicada",
+      entryUnpublished: "Entrada despublicada",
+      onFailToPublishEntry: "Falha ao publicar: %{details}",
+      onFailToUnpublishEntry: "Falha ao despublicar a entrada: %{details}",
+      entryUpdated: "Status da entrada atualizado",
+      onDeleteUnpublishedChanges: "Alterações não publicadas excluídas",
+      onFailToAuth: "%{details}",
+      onLoggedOut: "Você foi desconectado. Salve suas alterações e entre novamente.",
+      onBackendDown: "O serviço de back-end está fora do ar. Veja %{details} para mais detalhes.",
+    },
+  },
+  workflow: {
+    workflow: {
+      loading: "Carregando entradas do fluxo de trabalho editorial...",
+      workflowHeading: "Fluxo de Trabalho Editorial",
+      newPost: "Nova publicação",
+      description:
+        "%{smart_count} entrada aguardando revisão, %{readyCount} pronta para publicação. |||| %{smart_count} entradas aguardando revisão, %{readyCount} prontas para publicação.",
+      dateFormat: "D [de] MMMM",
+    },
+    workflowCard: {
+      lastChange: "%{date} por %{author}",
+      lastChangeNoAuthor: "%{date}",
+      lastChangeNoDate: "por %{author}",
+      deleteChanges: "Excluir alterações",
+      deleteNewEntry: "Excluir nova entrada",
+      publishChanges: "Publicar alterações",
+      publishNewEntry: "Publicar nova entrada",
+    },
+    workflowList: {
+      onDeleteEntry: "Tem certeza que deseja excluir esta entrada?",
+      onPublishingNotReadyEntry:
+        'Apenas itens com status "Pronto" podem ser publicados. Arraste o card para a coluna "Pronto" antes de publicar.',
+      onPublishEntry: "Tem certeza que deseja publicar esta entrada?",
+      draftHeader: "Rascunhos",
+      inReviewHeader: "Em revisão",
+      readyHeader: "Prontos",
+      currentEntries: "%{smart_count} entrada |||| %{smart_count} entradas",
+    },
+  },
 };
