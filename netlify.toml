@@ -22,7 +22,7 @@
       font-src 'self' data: https://fonts.gstatic.com;
       media-src 'self' data: blob:;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      script-src 'self' https://identity.netlify.com;
+      script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://identity.netlify.com;
       connect-src 'self' data: blob: https://*.netlify.app https://api.pipefy.com https://identity.netlify.com;
       worker-src 'self' blob:;
       manifest-src 'self';
