@@ -11,9 +11,11 @@
 /* Logo injetada dentro da AppHeaderContent do Decap (id="sc-header-logo",
    criado por init.js). */
 #sc-header-logo {
-  height: 28px;
+  height: 34px;
   margin-right: 20px;
   display: block;
+  align-self: center; /* a barra usa align-items:normal (= stretch), o que
+                          empurrava a logo pro topo em vez de centralizar */
 }
 
 /* ====== LOGIN ====== */
