@@ -8,7 +8,18 @@ if (window.CMS?.registerPreviewStyle) {
   window.CMS.registerPreviewStyle("/admin/preview.css", { raw: false });
 }
 
-if (window.DECAP_CMS_LOCALE_PT) {
+// OBS: o Decap se auto-inicializa (auto-mount) assim que o bundle carrega,
+// antes deste script (deferred) rodar — então este registerLocale chega
+// tarde demais pra "vencer" o locale "pt" que já vem embutido no bundle e
+// que o app já usou pra montar. Testamos ligar o CMS_MANUAL_INIT pra
+// resolver esse timing, mas é um bug conhecido do Decap CMS 3.8.3 (quebra
+// o app com "Failed to execute 'removeChild' on 'Node'" — várias issues
+// abertas no GitHub deles, sem correção oficial ainda). Preferimos manter
+// o app estável: o locale "pt" embutido do Decap já cobre bem a tradução.
+// Deixamos a chamada abaixo por segurança (não tem custo, é uma correção
+// grátis nas raras vezes em que ela chegar a tempo, ex. após um F5 com
+// cache quente), mas não dependa dela.
+if (window.DECAP_CMS_LOCALE_PT && window.CMS?.registerLocale) {
   window.CMS.registerLocale("pt", window.DECAP_CMS_LOCALE_PT);
 }
 
@@ -66,14 +77,8 @@ if (window.netlifyIdentity) {
   console.error("Identity widget não carregou.");
 }
 
-/* IMPORTANTE: com window.CMS_MANUAL_INIT = true (definido em index.html),
-   o Decap NÃO se auto-inicializa mais. Precisamos chamar CMS.init()
-   explicitamente, e só DEPOIS de registrar tudo (preview style, locale
-   pt, preview templates do preview.js) — senão o app monta sem essas
-   configurações, exatamente como acontecia antes desta correção. Este
-   deve ser o ÚLTIMO comando deste arquivo. */
-if (window.CMS && typeof window.CMS.init === "function") {
-  window.CMS.init();
-} else {
-  console.error("CMS.init não disponível — o admin não vai carregar.");
-}
+/* Não chamamos window.CMS.init() aqui — o Decap já se auto-inicializa
+   sozinho assim que o bundle carrega (comportamento padrão). Ver o
+   comentário no início deste arquivo e em admin/index.html sobre por que
+   NÃO usamos CMS_MANUAL_INIT + init() manual (bug conhecido do Decap
+   3.8.3 que quebra o app). */

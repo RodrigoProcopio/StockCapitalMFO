@@ -25,14 +25,16 @@
     <!-- Raiz exigida pelo Decap -->
     <div id="nc-root"></div>
 
-    <!-- IMPORTANTE: o bundle do Decap se auto-inicializa (chama CMS.init())
-         assim que termina de carregar — antes dos nossos scripts seguintes
-         (preview.js, locales/pt.js, init.js) rodarem. Isso faz o app montar
-         com o locale/preview padrão e ignorar nosso registerLocale("pt", ...)
-         tardio (o mesmo tipo de problema que já resolvemos com o Netlify
-         Identity). A flag abaixo desliga o auto-init; nós mesmos chamamos
-         CMS.init() no final de init.js, depois de registrar tudo. -->
-    <script>window.CMS_MANUAL_INIT = true;</script>
+    <!-- NÃO usar window.CMS_MANUAL_INIT aqui: testamos e é um bug conhecido,
+         ainda sem correção oficial, do próprio Decap CMS 3.8.3 (várias
+         issues abertas no GitHub deles com o mesmo erro). Com manual init
+         ligado, o app quebra ao montar (tela de erro vermelha: "Failed to
+         execute 'removeChild' on 'Node'") — o React acaba tentando montar
+         a árvore duas vezes no mesmo #nc-root. Por isso o app usa o
+         auto-init padrão do Decap; o locale "pt" embutido no bundle (já
+         bem completo) cobre a tradução, mesmo sem o nosso registerLocale
+         customizado (ver public/admin/locales/pt.js) conseguir "vencer" a
+         corrida contra o auto-init. -->
 
     <!-- 1) Decap CMS (bundle LOCAL) -->
     <script src="/admin/decap-cms-3.8.3.js" defer></script>
