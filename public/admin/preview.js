@@ -52,9 +52,19 @@
     ]);
   }
 
-  ['cartas', 'relatorios', 'insights', 'compliance'].forEach((coll) => {
-    CMS.registerPreviewTemplate(coll, CardPreview);
-  });
+  // DESLIGADO DE PROPÓSITO: registrar um preview customizado (registerPreviewTemplate)
+  // faz o Decap CMS 3.8.3 quebrar ao abrir QUALQUER entrada dessas coleções
+  // (tela de erro vermelha: "Minified React error #62"). Confirmado ao vivo:
+  // coleções SEM template customizado (ex.: Gráficos • Configurações) abrem
+  // normalmente com o preview padrão do Decap; as que usam CardPreview/
+  // FundoPreview quebram — mesmo depois de eliminar todo `style` como string
+  // do nosso código (causa comum desse erro). Não achamos a causa exata dentro
+  // do bundle do Decap a tempo, e um preview quebrado (tela de erro) é pior
+  // que não ter preview customizado. Deixamos o CardPreview definido (dá pra
+  // reativar um dia investigando mais/atualizando o Decap), só não registramos.
+  // ['cartas', 'relatorios', 'insights', 'compliance'].forEach((coll) => {
+  //   CMS.registerPreviewTemplate(coll, CardPreview);
+  // });
 
   /* ────────────────────────────────────────────────────────────────
      Preview da coleção "Fundos" — reproduz a cara da página real
@@ -278,5 +288,9 @@
     ]);
   }
 
-  CMS.registerPreviewTemplate('fundos', FundoPreview);
+  // DESLIGADO DE PROPÓSITO — mesmo motivo do CardPreview acima (bug do Decap
+  // 3.8.3 com preview customizado: "Minified React error #62" ao abrir a
+  // entrada). O formulário de edição da coleção Fundos continua funcionando
+  // 100% normalmente; só o preview visual ao lado fica no padrão do Decap.
+  // CMS.registerPreviewTemplate('fundos', FundoPreview);
 })();
