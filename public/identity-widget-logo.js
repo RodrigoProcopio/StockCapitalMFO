@@ -28,7 +28,10 @@
       }
       if (!doc || !doc.body) return;
 
-      var dialog = doc.querySelector(".modalDialog");
+      // ".modalDialog" é o wrapper flex (ocupa a tela toda, invisível);
+      // ".modalContent" é a caixa branca que realmente aparece na tela.
+      // Precisamos medir a caixa branca, não o wrapper.
+      var dialog = doc.querySelector(".modalContent");
       if (!dialog) return;
 
       var logo = doc.getElementById("sc-identity-logo");
