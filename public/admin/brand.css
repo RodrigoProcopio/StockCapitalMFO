@@ -3,13 +3,36 @@
   --brand-navy:#1c2846;
 }
 
-/* Header compacto, fixo no topo */
-.sc-admin-header { display: none !important; }
+/* Header compacto, fixo no topo, com a logo da Stock Capital acima
+   da barra "Conteúdos / Mídia" do próprio Decap. */
+.sc-admin-header {
+  display: flex !important;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  padding: 0 16px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  z-index: 400; /* acima da AppHeader sticky do Decap (zIndex300) */
+}
 
+.sc-admin-logo {
+  display: block;
+  line-height: 0;
+}
 
 .sc-admin-logo img {
-  height: 40px;   
+  height: 28px;
   display: block;
+}
+
+/* Empurra todo o conteúdo do Decap para baixo, abrindo espaço para
+   o header fixo acima. */
+body {
+  padding-top: 44px !important;
 }
 
 /* ====== LOGIN ====== */
