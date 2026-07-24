@@ -16,7 +16,7 @@ export default function PageLayout({ title, subtitle, children }) {
               alt="Logo Stock Capital"
               width={LOGO_W}
               height={LOGO_H}
-              style={{ height: "76px", width: "auto" }}
+              style={{ height: "88px", width: "auto" }}
               loading="eager"
               decoding="async"
               fetchPriority="high"

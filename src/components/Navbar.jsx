@@ -27,7 +27,7 @@ const NAV_HIGHLIGHTS = [
 
 const LOGO_W = 351;
 const LOGO_H = 118;
-const LOGO_STYLE = { height: "48px", width: "auto" };
+const LOGO_STYLE = { height: "52px", width: "auto" };
 
 const FOOTER_LINKS = [
   { label: "Canal de Denúncias", href: "https://app.pipefy.com/public/form/dirpZ0Km", ext: true },
@@ -67,7 +67,7 @@ export default function Navbar({ onGoTo }) {
             aria-label="Abrir menu"
             className="group flex h-14 items-center rounded-2xl border border-[#d6d6d6] bg-white/95 px-4 shadow-pill backdrop-blur-xl"
           >
-            <div className="relative flex h-12 w-44 items-center overflow-hidden">
+            <div className="relative flex h-[52px] w-44 items-center overflow-hidden">
               <motion.img
                 src={logoSmall}
                 alt="Stock Capital MFO"
