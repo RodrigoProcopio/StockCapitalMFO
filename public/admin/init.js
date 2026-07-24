@@ -11,9 +11,6 @@ if (window.CMS?.registerPreviewStyle) {
 if (window.DECAP_CMS_LOCALE_PT) {
   window.CMS.registerLocale("pt", window.DECAP_CMS_LOCALE_PT);
 }
-// o idioma é definido pelo config.yml -> locale: "pt"
-// (se existir CMS.setLocale, usamos, mas sem quebrar)
-if (window.CMS.setLocale) window.CMS.setLocale("pt");
 
 /* Logo da Stock Capital dentro da barra "Conteúdos / Mídia" do Decap.
    O Decap 3.8.3 não tem um slot próprio pra logo nessa barra, então
@@ -82,4 +79,16 @@ if (window.netlifyIdentity) {
   });
 } else {
   console.error("Identity widget não carregou.");
+}
+
+/* IMPORTANTE: com window.CMS_MANUAL_INIT = true (definido em index.html),
+   o Decap NÃO se auto-inicializa mais. Precisamos chamar CMS.init()
+   explicitamente, e só DEPOIS de registrar tudo (preview style, locale
+   pt, preview templates do preview.js) — senão o app monta sem essas
+   configurações, exatamente como acontecia antes desta correção. Este
+   deve ser o ÚLTIMO comando deste arquivo. */
+if (window.CMS && typeof window.CMS.init === "function") {
+  window.CMS.init();
+} else {
+  console.error("CMS.init não disponível — o admin não vai carregar.");
 }

@@ -25,6 +25,15 @@
     <!-- Raiz exigida pelo Decap -->
     <div id="nc-root"></div>
 
+    <!-- IMPORTANTE: o bundle do Decap se auto-inicializa (chama CMS.init())
+         assim que termina de carregar — antes dos nossos scripts seguintes
+         (preview.js, locales/pt.js, init.js) rodarem. Isso faz o app montar
+         com o locale/preview padrão e ignorar nosso registerLocale("pt", ...)
+         tardio (o mesmo tipo de problema que já resolvemos com o Netlify
+         Identity). A flag abaixo desliga o auto-init; nós mesmos chamamos
+         CMS.init() no final de init.js, depois de registrar tudo. -->
+    <script>window.CMS_MANUAL_INIT = true;</script>
+
     <!-- 1) Decap CMS (bundle LOCAL) -->
     <script src="/admin/decap-cms-3.8.3.js" defer></script>
 
