@@ -221,10 +221,10 @@
             h('td', {}, val || '—'),
           ])
         ))),
-        h('h3', { style: 'margin-top:16px;font-size:14px;' }, 'Exposição por setor'),
+        h('h3', { style: { marginTop: '16px', fontSize: '14px' } }, 'Exposição por setor'),
         exposicaoItens.length === 0
           ? h('p', { className: 'sc-f-empty' }, 'Nenhum item de exposição cadastrado.')
-          : h('table', { style: 'margin-top:8px;' }, h('tbody', {}, exposicaoItens.map((it, i) =>
+          : h('table', { style: { marginTop: '8px' } }, h('tbody', {}, exposicaoItens.map((it, i) =>
               h('tr', { key: i }, [
                 h('td', { className: 'sc-f-label-cell' }, it.setor || '—'),
                 h('td', {}, fmtPct(it.percentual)),
