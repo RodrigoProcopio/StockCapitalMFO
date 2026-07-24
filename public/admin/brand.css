@@ -35,9 +35,9 @@
   order: -1; /* garante que fique antes de "Conteúdos"/"Mídia" mesmo que
                 a ordem no DOM mude */
   flex-shrink: 0;
-  width: 101px;
-  height: 34px;
-  margin-right: 20px;
+  width: 131px;
+  height: 44px;
+  margin-right: 24px;
   background: url("/admin/logo.png") left center / contain no-repeat;
 }
 
