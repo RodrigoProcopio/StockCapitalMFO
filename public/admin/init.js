@@ -15,6 +15,29 @@ if (window.DECAP_CMS_LOCALE_PT) {
 // (se existir CMS.setLocale, usamos, mas sem quebrar)
 if (window.CMS.setLocale) window.CMS.setLocale("pt");
 
+/* Logo da Stock Capital dentro da barra "Conteúdos / Mídia" do Decap.
+   O Decap 3.8.3 não tem um slot próprio pra logo nessa barra, então
+   injetamos a imagem via JS logo no início da AppHeaderContent (o
+   nome da classe é gerado por CSS-in-JS, mas o sufixo "AppHeaderContent"
+   é estável entre carregamentos). Um MutationObserver reinsere a logo
+   se o Decap re-renderizar essa barra (ex.: troca de coleção). */
+(function () {
+  function ensureHeaderLogo() {
+    var content = document.querySelector('[class*="AppHeaderContent"]');
+    if (!content) return;
+    if (content.querySelector("#sc-header-logo")) return;
+    var img = document.createElement("img");
+    img.id = "sc-header-logo";
+    img.src = "/admin/logo.png";
+    img.alt = "Stock Capital";
+    content.insertBefore(img, content.firstChild);
+  }
+
+  ensureHeaderLogo();
+  var observer = new MutationObserver(ensureHeaderLogo);
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+
 
 /* Netlify Identity */
 if (window.netlifyIdentity) {
