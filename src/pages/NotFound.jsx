@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useSEO } from "../lib/useSEO.js";
 
 export default function NotFound() {

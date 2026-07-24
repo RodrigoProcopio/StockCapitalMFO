@@ -1,3 +1,4 @@
+import PageLayout from "../components/PageLayout.jsx";
 import { useSEO } from "../lib/useSEO.js";
 
 export default function PoliticaRetencaoLGPD() {

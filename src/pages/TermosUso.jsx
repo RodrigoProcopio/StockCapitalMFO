@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import PageLayout from "../components/PageLayout.jsx";
 import { useSEO } from "../lib/useSEO.js";
 
 export default function TermosUso() {
