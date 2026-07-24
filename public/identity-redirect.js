@@ -26,6 +26,12 @@
   script.onload = function () {
     if (!window.netlifyIdentity) return;
 
+    // IMPORTANTE: não chamar netlifyIdentity.init() aqui. O próprio script do
+    // widget já se auto-inicializa assim que carrega (comportamento interno
+    // da lib). Chamar init() de novo cria um SEGUNDO iframe duplicado e o
+    // conteúdo do modal acaba sendo renderizado num iframe diferente do que
+    // fica visível — resultado: a tela de criar senha nunca aparece, mesmo
+    // com o token válido. Aqui só registramos os handlers.
     window.netlifyIdentity.on("login", function () {
       window.netlifyIdentity.close();
       window.location.replace("/admin/");
@@ -34,8 +40,6 @@
     window.netlifyIdentity.on("error", function (err) {
       console.error("Erro no Netlify Identity (redirect):", err);
     });
-
-    window.netlifyIdentity.init();
   };
   document.head.appendChild(script);
 })();
