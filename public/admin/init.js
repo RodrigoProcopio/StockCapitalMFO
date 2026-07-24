@@ -34,6 +34,13 @@ if (window.netlifyIdentity) {
       user?.email ||
       "Usuário";
     console.log("Usuário logado no CMS:", displayName);
+
+    // Fecha o modal/iframe do widget explicitamente. Sem isso, em alguns
+    // fluxos (ex.: definir senha via link de recuperação/convite) o overlay
+    // do widget pode ficar "preso" invisível sobre a tela, bloqueando cliques
+    // no restante do admin (sidebar, botões "New X", etc.).
+    window.netlifyIdentity.close();
+
     if (hasToken) window.location.replace("/admin/");
   });
 
