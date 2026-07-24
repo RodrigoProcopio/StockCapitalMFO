@@ -6,3 +6,6 @@ dist
 
 # Local Netlify folder
 .netlify
+
+# Arquivo temporário gerado por uma tentativa de deploy manual (pode ser apagado)
+deploy-*.zip
