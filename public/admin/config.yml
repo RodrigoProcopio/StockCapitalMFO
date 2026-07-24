@@ -181,6 +181,15 @@ collections:
     format: "json"
     slug: "{{slug}}"
     summary: "{{fields.nome}} — {{fields.categoria_label}}"
+    # Preview desligado só nesta coleção: a estrutura aninhada (objetos
+    # dentro de objetos, com listas dentro) faz até o preview PADRÃO do
+    # Decap quebrar ("Minified React error #62") ao abrir qualquer
+    # entrada — acontece mesmo sem nenhum preview customizado nosso.
+    # As outras coleções (Cartas, Relatórios, Gráficos, etc.) usam o
+    # preview padrão normalmente. O formulário de edição de Fundos
+    # continua 100% funcional, só sem o preview ao lado.
+    editor:
+      preview: false
 
     fields:
       - { label: "ID", name: "id", widget: "string", hint: "Identificador interno do fundo. Não precisa mudar depois de criado." }
