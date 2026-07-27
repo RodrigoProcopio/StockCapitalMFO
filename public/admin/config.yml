@@ -152,9 +152,49 @@ collections:
             name: "series"
             widget: "list"
             summary: "{{fields.date}} — {{fields.rendimento}}%"
+            hint: "Rendimento do mês (não acumulado). Ex.: se o fundo rendeu 1,5% em março, digite 1.5 — o gráfico soma os meses automaticamente."
             fields:
               - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
-              - { label: "Rendimento (%)", name: "rendimento", widget: "number", value_type: "float" }
+              - { label: "Rendimento do mês (%)", name: "rendimento", widget: "number", value_type: "float" }
+
+      - name: "desempenho_alpha"
+        label: "Dados • Desempenho (Alpha¹ — retorno acima do IPCA)"
+        file: "src/content/rentabilidade/data/desempenho/alpha.json"
+        fields:
+          - label: "Série mensal"
+            name: "series"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.rendimento}}%"
+            hint: "Rendimento do mês (não acumulado), mesma lógica da linha \"Portfólio\". Use os mesmos meses para as linhas ficarem alinhadas no gráfico."
+            fields:
+              - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
+              - { label: "Rendimento do mês (%)", name: "rendimento", widget: "number", value_type: "float" }
+
+      - name: "desempenho_ifha"
+        label: "Dados • Desempenho (IFHA² — fundos multimercado no Brasil)"
+        file: "src/content/rentabilidade/data/desempenho/ifha.json"
+        fields:
+          - label: "Série mensal"
+            name: "series"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.rendimento}}%"
+            hint: "Rendimento do mês (não acumulado), mesma lógica da linha \"Portfólio\". Use os mesmos meses para as linhas ficarem alinhadas no gráfico."
+            fields:
+              - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
+              - { label: "Rendimento do mês (%)", name: "rendimento", widget: "number", value_type: "float" }
+
+      - name: "desempenho_ipca"
+        label: "Dados • Desempenho (IPCA — índice de inflação)"
+        file: "src/content/rentabilidade/data/desempenho/ipca.json"
+        fields:
+          - label: "Série mensal"
+            name: "series"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.rendimento}}%"
+            hint: "Rendimento do mês (não acumulado), mesma lógica da linha \"Portfólio\". Use os mesmos meses para as linhas ficarem alinhadas no gráfico."
+            fields:
+              - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
+              - { label: "Rendimento do mês (%)", name: "rendimento", widget: "number", value_type: "float" }
 
       - name: "risco_retorno_sortino_sharpe"
         label: "Dados • Risco-Retorno"
@@ -168,6 +208,18 @@ collections:
               - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
               - { label: "Sortino", name: "sortino", widget: "number", value_type: "float" }
               - { label: "Sharpe", name: "sharpe", widget: "number", value_type: "float" }
+
+      - name: "volatilidade_ltm_dados"
+        label: "Dados • Volatilidade (LTM)"
+        file: "src/content/rentabilidade/data/volatilidade/ltm.json"
+        fields:
+          - label: "Série mensal"
+            name: "series"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.vol}}%"
+            fields:
+              - { label: "Mês", name: "date", widget: "datetime", format: "YYYY-MM", date_format: "YYYY-MM", time_format: false }
+              - { label: "Volatilidade do mês (%)", name: "vol", widget: "number", value_type: "float" }
 
   # ==============================
   # FUNDOS
