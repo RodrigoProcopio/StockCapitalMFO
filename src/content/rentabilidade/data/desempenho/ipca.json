@@ -2,13 +2,29 @@
   "nome": "IPCA",
   "slug": "carteira1",
   "series": [
-    { "date": "2025-01", "rendimento": 0.16 },
-    { "date": "2025-02", "rendimento": 1.31 },
-    { "date": "2025-03", "rendimento": 0.56 },
-    { "date": "2025-04", "rendimento": 0.43 },
-    { "date": "2025-05", "rendimento": 0.26 },
-    { "date": "2025-06", "rendimento": 0.24 },
-    { "date": "2025-07", "rendimento": 0.26 },
-    { "date": "2025-08", "rendimento": -0.04 }
+    {
+      "date": "2026-01",
+      "rendimento": 0.33
+    },
+    {
+      "date": "2026-02",
+      "rendimento": 0.7
+    },
+    {
+      "date": "2026-03",
+      "rendimento": 0.88
+    },
+    {
+      "date": "2026-04",
+      "rendimento": 0.67
+    },
+    {
+      "date": "2026-05",
+      "rendimento": 0.58
+    },
+    {
+      "date": "2026-06",
+      "rendimento": 0.16
+    }
   ]
 }
